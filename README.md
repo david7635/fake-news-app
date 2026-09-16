@@ -1,76 +1,241 @@
-📰 Fake News Detection Dashboard
+# 📰 Fake News Detection Dashboard
 
-This is an interactive web application for a Data Analytics and Visualization project. The app analyzes news headlines to detect "Real" vs. "Fake" news using a Logistic Regression model.
+An interactive **Data Analytics and Visualization** project that uses **Machine Learning and Streamlit** to classify news headlines as **REAL** or **FAKE**.
 
-This project demonstrates a complete machine learning workflow, from baseline modeling and data analysis to model refinement, cross-validation, and final deployment.
+The project covers the complete machine-learning workflow: establishing a baseline, analyzing data quality, refining the training dataset, validating the model on independent datasets, and deploying the final application through Streamlit.
 
-Project Analysis & Model Refinement
+## 🚀 Live Demo
 
-The project was executed in several deliberate phases to build a robust and reliable model.
+The application is designed for Streamlit deployment and can also be run locally. Add your deployed Streamlit URL here once available:
 
-Baseline Model: An initial model was trained on a preliminary dataset (merged_news.csv) to establish feasibility and a performance baseline.
+> **Live App:** _Add Streamlit deployment URL_
 
-Data Analysis & Refinement: Analysis of the baseline model's predictions revealed significant inconsistencies in the original dataset's labels. For example, many verified headlines from sources like (Reuters) were incorrectly labeled as "FAKE".
+## 📌 Project Overview
 
-The Solution (ISOT Dataset): To build a reliable classifier, the model was retrained on the high-quality, industry-standard ISOT Dataset. This dataset correctly identifies trusted sources, resolving the core bias of the initial data.
+The initial model was trained on a preliminary dataset, `merged_news.csv`, to establish a baseline and verify that the classification approach was feasible.
 
-The Deployment Model: To balance performance with cloud deployment constraints (GitHub file size limits), this final app is trained on a 10% representative sample of the ISOT dataset. The model trains live when the app first boots up using Streamlit's @st.cache_resource.
+During analysis, the baseline predictions exposed inconsistencies in the original dataset labels. For example, headlines from trusted sources such as Reuters appeared with incorrect `FAKE` labels. This indicated that the issue was not simply model performance, but also **training-data quality and labeling consistency**.
 
-Features
+To address this, the project was retrained using the **ISOT Fake News Dataset**, which provides separate `Fake.csv` and `True.csv` files and a more consistent labeling structure.
 
-The app is organized into five tabs, reflecting a full data analysis workflow:
+For deployment, the application uses a **10% representative sample of the ISOT dataset**. This keeps the repository and deployment footprint manageable while retaining the overall structure of the training data. The Logistic Regression model is trained when the Streamlit application starts, with `@st.cache_resource` used to avoid retraining on every interaction.
 
-1. 📰 News Analyzer
+## 🧠 Machine Learning Pipeline
 
-A simple interface to paste in any news headline. The model will predict whether it's "REAL" or "FAKE" and provide a confidence score.
+```text
+Initial Dataset
+      ↓
+Baseline Model
+      ↓
+Data Quality Analysis
+      ↓
+Label / Dataset Refinement
+      ↓
+ISOT Dataset
+      ↓
+10% Representative Training Sample
+      ↓
+TF-IDF Feature Extraction
+      ↓
+Logistic Regression
+      ↓
+Cross-Validation & Independent Evaluation
+      ↓
+Streamlit Deployment
+```
 
-2. 📊 Visual Insights
+### Model
 
-Analyzes the ISOT (10% sample) training data. This tab shows:
+- **Algorithm:** Logistic Regression
+- **Text Representation:** TF-IDF
+- **Task:** Binary text classification
+- **Classes:** `REAL` / `FAKE`
+- **Deployment:** Streamlit
 
-The class balance of "REAL" vs. "FAKE" news in the training set.
+## ✨ Features
 
-A breakdown of article subjects (e.g., politicsNews, worldnews), showing the clear distinction our model learned.
+The dashboard is divided into five tabs, each corresponding to a stage of the analysis workflow.
 
-The distribution of article lengths.
+### 1. 📰 News Analyzer
 
-3. 🔍 Cross-Validation (WELFake)
+Enter a news headline and receive:
 
-Validates our model (trained on ISOT) against the welfake_sample_final.csv dataset. This tab:
+- Predicted class: **REAL** or **FAKE**
+- Model confidence score
+- Immediate classification through the deployed ML pipeline
 
-Automatically identifies and corrects for the WELFake dataset's inverted label scheme (0=REAL, 1=FAKE).
+### 2. 📊 Visual Insights
 
-Calculates the model's "true" accuracy against this new data.
+Explore the characteristics of the ISOT training sample, including:
 
-Displays a confusion matrix of the validation results.
+- REAL vs. FAKE class distribution
+- Article subject distribution, such as `politicsNews` and `worldnews`
+- Article-length distribution
 
-4. 🧪 Final Evaluation
+These visualizations help demonstrate the patterns present in the training data.
 
-Performs a final accuracy test against a third dataset, evaluation_final.csv. This tab:
+### 3. 🔍 Cross-Validation — WELFake
 
-Automatically checks the label scheme (flipped or normal) to ensure a correct comparison.
+The trained ISOT model is evaluated against `welfake_sample_final.csv`.
 
-Calculates the final validation accuracy.
+The evaluation workflow:
 
-Displays the final confusion matrix.
+- Detects the label convention used by the validation dataset
+- Corrects the label mapping when the WELFake labels are inverted
+- Calculates validation accuracy
+- Generates a confusion matrix
 
-5. ℹ️ About This Model
+This provides an external check of model performance on data that was not used for training.
 
-Explains the data, the 10% sampling for deployment, and the model's architecture.
+### 4. 🧪 Final Evaluation
 
-How to Run Locally
+A second independent evaluation is performed using `evaluation_final.csv`.
 
-Clone the repository:
+The application:
 
-git clone [https://github.com/daviddasari/fake-news-app.git](https://github.com/daviddasari/fake-news-app.git)
+- Checks whether the evaluation labels use the expected mapping
+- Adjusts the mapping when necessary
+- Calculates validation accuracy
+- Displays a confusion matrix
+
+### 5. ℹ️ About This Model
+
+Provides information about:
+
+- The datasets used in the project
+- Why the original dataset was replaced
+- The 10% deployment sample
+- The Logistic Regression + TF-IDF architecture
+- The overall project workflow
+
+## 📂 Project Structure
+
+```text
+fake-news-app/
+├── app1.py
+├── requirements.txt
+├── README.md
+├── welfake_sample_final.csv
+├── evaluation_final.csv
+└── ...
+```
+
+> Dataset filenames may vary depending on the version of the repository. The application expects the required CSV files to be available at runtime.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| Pandas | Data loading and preprocessing |
+| NumPy | Numerical operations |
+| Scikit-learn | TF-IDF, Logistic Regression, metrics and evaluation |
+| Matplotlib / Seaborn | Data visualization |
+| Streamlit | Interactive web application |
+| Git & GitHub | Version control and deployment workflow |
+
+## 📊 Datasets
+
+### ISOT Fake News Dataset
+
+Used as the primary training dataset after analysis of the original baseline data revealed labeling inconsistencies.
+
+The deployment version uses a **10% representative sample** of the available ISOT data to reduce repository and deployment size.
+
+### WELFake
+
+Used as an independent validation dataset to evaluate how the ISOT-trained classifier performs on another source of labeled news data.
+
+### Evaluation Dataset
+
+`evaluation_final.csv` is used for a separate final evaluation step and confusion-matrix analysis.
+
+## 🔬 Why the Dataset Was Changed
+
+The project initially focused on model development using `merged_news.csv`. However, exploratory analysis of the resulting predictions revealed examples where headlines from known trusted sources were associated with incorrect labels.
+
+Rather than attempting to compensate for potentially inconsistent labels through model tuning alone, the project changed the primary training source to the ISOT dataset.
+
+This highlights an important machine-learning lesson:
+
+> **Model quality depends heavily on data quality.**
+
+Better algorithms cannot reliably compensate for systematically incorrect training labels.
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/david7635/fake-news-app.git
 cd fake-news-app
+```
 
+### 2. Install dependencies
 
-Install the required libraries:
-
+```bash
 pip install -r requirements.txt
+```
 
+### 3. Run the Streamlit application
 
-Run the Streamlit app:
-
+```bash
 streamlit run app1.py
+```
+
+The application will start locally and Streamlit will provide a browser URL, usually:
+
+```text
+http://localhost:8501
+```
+
+## ☁️ Deployment
+
+The application can be deployed using **Streamlit Community Cloud** or another environment capable of running Streamlit applications.
+
+For deployment, make sure the repository contains:
+
+- `app1.py`
+- `requirements.txt`
+- Required CSV datasets
+- Any additional project files imported by the application
+
+Because the model is trained at application startup, the deployment environment needs enough memory and CPU resources to load the data and fit the classifier.
+
+## ⚠️ Limitations
+
+This project is intended as an academic **data analytics and machine-learning demonstration**, not as a definitive fact-checking system.
+
+A text classifier can identify patterns associated with the training data, but it does not independently verify whether a real-world claim is factually true.
+
+Performance may also vary across:
+
+- Different news sources
+- Topics not well represented in the training data
+- Writing styles outside the training distribution
+- Datasets with different labeling conventions
+
+The reported validation results should therefore be interpreted in the context of the datasets used for evaluation.
+
+## 🔮 Possible Improvements
+
+Future versions could explore:
+
+- Larger training samples or the complete ISOT dataset
+- Hyperparameter tuning for Logistic Regression
+- Additional models such as Linear SVM or Naive Bayes
+- More robust preprocessing and text normalization
+- Precision, recall, F1-score and ROC-AUC reporting
+- Model explainability using influential TF-IDF features
+- Real-time news-source verification APIs
+- Persistent model artifacts to avoid training during application startup
+
+## 👨‍💻 Author
+
+**David Dasari**
+
+GitHub: [@david7635](https://github.com/david7635)
+
+## 📄 License
+
+Add the project's license here if one is included in the repository.
