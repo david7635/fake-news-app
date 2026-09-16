@@ -115,6 +115,7 @@ fake-news-app/
 ├── app1.py
 ├── requirements.txt
 ├── README.md
+├── LICENSE
 ├── welfake_sample_final.csv
 ├── evaluation_final.csv
 └── ...
@@ -238,4 +239,22 @@ GitHub: [@david7635](https://github.com/david7635)
 
 ## 📄 License
 
-Add the project's license here if one is included in the repository.
+### Source Code
+
+The source code in this repository is released under the **MIT License**. See the [`LICENSE`](LICENSE) file for the full license text.
+
+### Third-Party Datasets
+
+The datasets used by this project are **third-party resources** and are not automatically covered by the repository's MIT License. Their individual licenses and attribution requirements must be respected when downloading, using, modifying, or redistributing them.
+
+Kaggle supports multiple open dataset licenses, including **CC0, CC BY, CC BY-SA, GPL, ODC, and CDLA** licenses. The applicable license depends on the specific dataset and dataset publisher. citeturn0search1turn0search0
+
+For example, the Kaggle ISOT mirror used as a reference for this project is listed as **MIT**, while other Kaggle mirrors of the same underlying dataset may have different or unknown licensing terms. citeturn1search0turn1search2
+
+The WELFake dataset is also published under different licensing terms across Kaggle copies; one commonly referenced Kaggle version is listed as **CC BY 4.0**, while some derived versions use **CC BY-NC-SA 4.0**. Always check the license of the exact dataset version being used. citeturn1search5turn1search4
+
+### Dataset Attribution
+
+The ISOT Fake News Dataset was developed by the **Information Security and Object Technology (ISOT) Research Group at the University of Victoria**. The original dataset and its associated research should be cited when used. citeturn1search9turn1search11
+
+This repository does **not** claim ownership of the third-party datasets or the underlying news articles.
