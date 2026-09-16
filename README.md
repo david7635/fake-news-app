@@ -245,16 +245,39 @@ The source code in this repository is released under the **MIT License**. See th
 
 ### Third-Party Datasets
 
-The datasets used by this project are **third-party resources** and are not automatically covered by the repository's MIT License. Their individual licenses and attribution requirements must be respected when downloading, using, modifying, or redistributing them.
+The datasets used in this project are third-party resources and are **not automatically covered by this repository's MIT License**. Their respective licenses and attribution requirements apply separately.
 
-Kaggle supports multiple open dataset licenses, including **CC0, CC BY, CC BY-SA, GPL, ODC, and CDLA** licenses. The applicable license depends on the specific dataset and dataset publisher. citeturn0search1turn0search0
+#### ISOT Fake News Dataset
 
-For example, the Kaggle ISOT mirror used as a reference for this project is listed as **MIT**, while other Kaggle mirrors of the same underlying dataset may have different or unknown licensing terms. citeturn1search0turn1search2
+The primary training data is based on the **ISOT Fake News Dataset**, developed by the Information Security and Object Technology (ISOT) Research Group at the University of Victoria.
 
-The WELFake dataset is also published under different licensing terms across Kaggle copies; one commonly referenced Kaggle version is listed as **CC BY 4.0**, while some derived versions use **CC BY-NC-SA 4.0**. Always check the license of the exact dataset version being used. citeturn1search5turn1search4
+- [ISOT Research Group — Fake News Dataset](https://onlineacademiccommunity.uvic.ca/isot/2022/11/27/fake-news-detection-datasets/)
+- [ISOT Fake News Dataset documentation](https://onlineacademiccommunity.uvic.ca/isot/wp-content/uploads/sites/7295/2023/02/ISOT_Fake_News_Dataset_ReadMe.pdf)
+- [Kaggle — ISOT Fake News Dataset](https://www.kaggle.com/datasets/rahulogoel/isot-fake-news-dataset)
+
+The Kaggle copy referenced above is listed as **MIT**, but Kaggle hosts multiple copies of datasets, and licensing can differ between individual dataset pages. Always verify the license of the exact copy being used.
+
+#### WELFake Dataset
+
+WELFake is used as an independent validation dataset.
+
+- [WELFake Dataset — Zenodo](https://zenodo.org/records/4561253)
+- [WELFake research paper](https://doi.org/10.1109/TCSS.2021.3068519)
+
+The applicable license should be checked against the exact WELFake dataset copy used by the project.
 
 ### Dataset Attribution
 
-The ISOT Fake News Dataset was developed by the **Information Security and Object Technology (ISOT) Research Group at the University of Victoria**. The original dataset and its associated research should be cited when used. citeturn1search9turn1search11
+The ISOT Fake News Dataset should be attributed to:
+
+> Ahmed H., Traore I., Saad S.  
+> "Detecting opinion spams and fake news using text classification."  
+> Journal of Security and Privacy, Volume 1, Issue 1, 2018.
+
+Additional reference:
+
+> Ahmed H., Traore I., Saad S.  
+> "Detection of Online Fake News Using N-Gram Analysis and Machine Learning Techniques."  
+> ISDDC 2017, Springer.
 
 This repository does **not** claim ownership of the third-party datasets or the underlying news articles.
